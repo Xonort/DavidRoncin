@@ -52,6 +52,7 @@ public class FightMgn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         E_name = "Brutus";
         brts = Brutus.sprite;
         time = 0;
@@ -232,13 +233,15 @@ public class FightMgn : MonoBehaviour
         Brutus.sprite = Brutus_ko;
         over = true;
         //sprite ko
+        SceneManager.LoadScene("Dialog");
     }
     public void lose()
     {
         result.gameObject.SetActive(true);
         result.text = "You lose !";
         result.color = Color.red;
-        over = true;  
+        over = true;
+        SceneManager.LoadScene("Fight");
     }
     public void rndpos(Button b)
     {

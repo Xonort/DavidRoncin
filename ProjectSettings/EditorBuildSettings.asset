@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: 5d4a6b464340e4643aba5f6f796f1a77
+  - enabled: 1
     path: Assets/Scenes/Fight.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: ca13c554b41c934489264c2e5374310b
+  - enabled: 1
+    path: Assets/Scenes/Dialog.unity
+    guid: eae94f517f56ab94298dc4e9ced43dda
+  - enabled: 1
+    path: Assets/Scenes/Flight.unity
+    guid: deb76505eb6ea514eb0385259ce62ea1
   m_configObjects: {}

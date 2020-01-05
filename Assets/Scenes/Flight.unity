@@ -168,6 +168,9 @@ MonoBehaviour:
   paused: 0
   timer: 0
   bgMusic: {fileID: 938014425}
+  dialog: 0
+  lives: 0
+  boom: 0
 --- !u!82 &938014425
 AudioSource:
   m_ObjectHideFlags: 0
@@ -361,7 +364,7 @@ GameObject:
   - component: {fileID: 1292024426}
   - component: {fileID: 1292024427}
   - component: {fileID: 1292024431}
-  - component: {fileID: 1292024432}
+  - component: {fileID: 1292024433}
   m_Layer: 0
   m_Name: Vaisseau
   m_TagString: Untagged
@@ -511,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 20, y: 20}
---- !u!114 &1292024432
+--- !u!114 &1292024433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,9 +523,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292024425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cfbf20d32cbec04da013fcf51f4e4cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 3aa4c5c788ce5834194d8cc9fef02c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c: {fileID: 1009176602}
+  tinvul: 150
+  sprite: {fileID: 1292024429}
+  backup: {fileID: 1292024429}
+  anim: {fileID: 1292024426}
+  backupa: {fileID: 1292024426}
+  dmga: {fileID: 0}
+  dmg: {fileID: 21300000, guid: 4434b247582518141a9205220f5ab06a, type: 3}
 --- !u!1001 &2393403037023391283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -589,6 +600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2393403036843698439, guid: 5114841356ab3e04998e3295eb066f68,
+        type: 3}
+      propertyPath: speed.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5114841356ab3e04998e3295eb066f68, type: 3}

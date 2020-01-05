@@ -33,16 +33,25 @@ public class DialogMng : MonoBehaviour
     private string text;
     private bool gauche;
     private Sprite s;
+    private Vector2 size2;
+    private Vector3 size3;
+
+    public Image bg;
+    public Image vaisseau;
+    public Image jazz;
+    public Image garagebg;
+
 
     //private ArrayList<int, string> dialog;
     //public TextMeshPro textmp;
-    private int timer;
+    //private int timertimer;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialog = 0;
-        timer = 0;
+        bg = vaisseau;
+        dialog= gameManager.Singleton.dialog;
+        //timer = 0;
         c = Camera.main;
         //backup = new SpriteRenderer();
         //backup.sprite = sprite2.sprite;
@@ -60,6 +69,9 @@ public class DialogMng : MonoBehaviour
 
         name1.text = perso1N;
         name2.text = perso2N;
+        dialog--;
+        callNext();
+        sprite2.sprite = null;
         //timerText.text = gameManager.Singleton.timer.ToString();
     }
 
@@ -90,6 +102,7 @@ public class DialogMng : MonoBehaviour
         dialog++;
         phrase(dialog);
         next(nom, text, gauche, s);
+        gameManager.Singleton.dialog++;
     }
     public void next(string nom, string text, bool gauche/*Gauche->true*/,Sprite s)
     {
@@ -100,6 +113,11 @@ public class DialogMng : MonoBehaviour
             name1.gameObject.SetActive(true);
             name2.gameObject.SetActive(false);
             leTexte.text = text;
+
+            size2 = sprite1.size;
+            size3 = size2;
+            sprite1.transform.position = c.ViewportToWorldPoint(new Vector3(0, 0, 25));
+            sprite1.transform.position = sprite1.transform.position + size3;
         }
         else
         {
@@ -108,6 +126,10 @@ public class DialogMng : MonoBehaviour
             name1.gameObject.SetActive(false);
             name2.gameObject.SetActive(true);
             leTexte.text = text;
+            sprite2.transform.position = c.ViewportToWorldPoint(new Vector3(1, 0, 25));
+            size2 = sprite2.size;
+            size3 = new Vector3(-(size2.x), size2.y, 0);
+            sprite2.transform.position = sprite2.transform.position + size3;
         }/*
         switch (nom)
         {
@@ -212,6 +234,7 @@ public class DialogMng : MonoBehaviour
                 gauche = true;
                 s = null;
                 //retour jeu
+                SceneManager.LoadScene("Flight");
                 break;
             case 13:
                 nom = "Jack Fletcher";
@@ -248,6 +271,7 @@ public class DialogMng : MonoBehaviour
                 text = "Svaaarv sfrav  sfa.";
                 gauche = false;
                 s = Pango;
+                SceneManager.LoadScene("Flight");
                 break;
             case 19:
                 nom = "Amanda";
@@ -290,8 +314,9 @@ public class DialogMng : MonoBehaviour
                 text = "BOOOOOM !";
                 gauche = true;
                 s = Amanda;
+                SceneManager.LoadScene("Flight");
                 break;
-                //boom
+            //boom
             case 26:
                 //explosion !
                 break;
@@ -302,6 +327,7 @@ public class DialogMng : MonoBehaviour
                 s = Jack;
                 break;
             case 28:
+                bg = garagebg;
                 nom = "Robierto";
                 text = "Bienvento en le meillor garage de cote du sector 56.";
                 gauche = false;
@@ -313,32 +339,126 @@ public class DialogMng : MonoBehaviour
                 text = "Votre capsule etre besoin reparer? oui?";
                 gauche = false;
                 s = garage;
-                //change bg
                 break;
             case 30:
+                nom = "Jack Fletcher";
+                text = "Prenez-en bien soin.";
+                gauche = true;
+                s = garage;
+                break;
+            case 31:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = Jack;
+                break;
+            case 32:
+                nom = "Scarvftrv";
+                text = "Scaff.";
+                gauche = false;
+                s = Pango;
+                break;
+            case 33:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = Jack;
+                break;
+            case 34:
+                nom = "Anna Flemington";
+                text = "tuto rapide! click sur 'dodge' pour éviter, sur 'block' pour bloquer, après ça contre-attaque! (bloquer te fait quand même prendre quelques dégats.)";
+                gauche = false;
+                s = Anna;
+                break;
+            case 35:
+                nom = "Jack Fletcher";
+                text = "Amanda je suppose que tu vas rester dans ta chambre?";
+                gauche = true;
+                s = Jack;
+                break;
+                /* PAS LE TEMPS !!!
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+            case 29:
+                nom = "Jack Fletcher";
+                text = "Scarvftrv tu veux assister dans les réparations ?";
+                gauche = true;
+                s = garage;
+                break;
+                break;*/
+            case 36:
                 nom = "Docteur S";
-                text = "Coucou";
+                text = "L'auteur n'a pas le temps de tout mettre s'il veut rendre le projet à temps !";
                 gauche = true;
                 s = Doc_S;
                 break;
-            case 31:
+            case 37:
                 nom = "Zegrat";
-                text = "Coucou";
+                text = "Vous devrez donc aller chercher un mcGuffin et pour cela batter un gars vraiment moche!";
                 gauche = true;
                 s = Zegrat;
-                break;/* 
-            case 13:
-                nom = "Jack Fletcher";
-                text = "Bon j'ai une idée mais ça risque de secouer.";
-                gauche = true;
-                s = Jack;
                 break;
-            case 13:
+            case 38:
                 nom = "Jack Fletcher";
-                text = "Bon j'ai une idée mais ça risque de secouer.";
+                text = "Hein quoi ? Attendez c'est quoi ce ...";
                 gauche = true;
                 s = Jack;
-                break;*/
+                SceneManager.LoadScene("Fight");
+                break;
+            case 39:
+                nom = "Veronica Passion";
+                text = "Bravo tu as gagné. il y a un scénar plus développé (pas fini tout de même) dans le fichier 'Draft' mais là y'avait vraiment pas le temps";
+                gauche = true;
+                s = Veronica;
+                break;
+            case 40:
+                nom = "Veronica Passion";
+                text = "Merci d'avoir joué !";
+                gauche = true;
+                s = Veronica;
+                SceneManager.LoadScene("Credits");
+                break;
+            /* 
+        case 13:
+            nom = "Jack Fletcher";
+            text = "Bon j'ai une idée mais ça risque de secouer.";
+            gauche = true;
+            s = Jack;
+            break;
+        case 13:
+            nom = "Jack Fletcher";
+            text = "Bon j'ai une idée mais ça risque de secouer.";
+            gauche = true;
+            s = Jack;
+            break;*/
             default:
                 Debug.Log("default case");
                 break;

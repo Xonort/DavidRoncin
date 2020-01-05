@@ -13,6 +13,9 @@ public class gameManager : MonoBehaviour
 	public bool paused;
 	public int timer;
 	public AudioSource bgMusic;
+	public int dialog;
+	public int lives;
+	public bool boom;
 	/*public bool fading;
 	public ArrayList<gameObject> toFade;*/
 	
@@ -27,7 +30,9 @@ public class gameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+		boom = false;
+		lives = 10;
+		dialog = 0;
 		if (scene == 1)
 		{
 			Instantiate(Resources.Load("Asteroid"));
@@ -46,6 +51,18 @@ public class gameManager : MonoBehaviour
     {
 		Instantiate(Resources.Load("Asteroid"));
 	}
+	public void go()
+    {
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+		Instantiate(Resources.Load("Asteroid"));
+	}
 
     // Update is called once per frame
     void Update()
@@ -56,6 +73,7 @@ public class gameManager : MonoBehaviour
 			fade();
 		*/
     }
+
 	
 	public void openOptions(){
 		pause();

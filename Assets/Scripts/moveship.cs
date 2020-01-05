@@ -20,7 +20,8 @@ public class moveship : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
     {
-	c=Camera.main;
+		gameManager.Singleton.go();
+		c =Camera.main;
 	sprite = GetComponent<SpriteRenderer>();
 	LH=c.ViewportToWorldPoint(new Vector3(0,0,0));
 	RH=c.ViewportToWorldPoint(new Vector3(1,0,0));
@@ -43,16 +44,8 @@ public class moveship : MonoBehaviour
 
 
 		movement=new Vector2(speed.x*x,speed.y*y);
-		pos.x=LH.x+(sprite.bounds.size.x/2);	
+		//pos.x=LH.x+(sprite.bounds.size.x/2);	
 
-
-
-		if(x<0){
-			//scale=new Vector3(-1,1,1);
-		}
-		else if(x>0){
-			scale=new Vector3(1,1,1);
-		}
 
 		if(y<0&&pos.y<=(LH.y+(sprite.bounds.size.y/2))){
 			movement.y=0;
@@ -61,6 +54,16 @@ public class moveship : MonoBehaviour
 		else if (y>0&&pos.y>=(LB.y-(sprite.bounds.size.y/2))){
 			movement.y=0;
 			pos.y=(LB.y-(sprite.bounds.size.y/2));
+		}
+		if (x < 0 && pos.x <= (LH.x + (sprite.bounds.size.x / 2)))
+		{
+			movement.x = 0;
+			pos.x = (LH.x + (sprite.bounds.size.x / 2));
+		}
+		else if (x > 0 && pos.x >= (RH.x - (sprite.bounds.size.x / 2)))
+		{
+			movement.x = 0;
+			pos.x = (RH.x - (sprite.bounds.size.x / 2));
 		}
 
 		GetComponent<Transform>().position=pos;

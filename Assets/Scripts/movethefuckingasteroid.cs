@@ -34,6 +34,7 @@ public class movethefuckingasteroid : MonoBehaviour
 			posy=Random.Range(BL.y, TR.y);
 			if(coin>0.5f){
 				posx=TL.x;
+				//posx=TR.x;
 			}else{
 				posx=BR.x;
 			}
@@ -54,7 +55,7 @@ public class movethefuckingasteroid : MonoBehaviour
 		speedx=Random.Range(-5, 5);
 		speedy=Random.Range(-5, 5);
 		
-		Debug.Log(GetComponent<Transform>().position);
+		//Debug.Log(GetComponent<Transform>().position);
 		
     }
 
